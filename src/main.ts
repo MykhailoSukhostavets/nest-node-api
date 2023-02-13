@@ -9,7 +9,6 @@ async function bootstrap() {
     .setTitle('Random Dogs')
     .setDescription('Description for Dog API')
     .setVersion('0.1')
-    .addTag('dog')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
