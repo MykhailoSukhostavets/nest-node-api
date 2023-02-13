@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [MongooseModule.forRoot(process.env.MONGODB_URL), DogapiModule],
 })
 export class AppModule {
+  // Register the middleware for all routes
   configure(consumer: MiddlewareConsumer): void {
     consumer.apply(AppLoggerMiddleware).forRoutes('*');
   }
