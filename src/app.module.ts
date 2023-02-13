@@ -1,13 +1,10 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AppLoggerMiddleware } from './middleware/logger.middleware';
 import { DogapiModule } from './dogapi/dogapi.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [DogapiModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [MongooseModule.forRoot(process.env.MONGODB_URL), DogapiModule],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer): void {
